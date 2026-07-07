@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>staff</title>
+    <link rel="stylesheet" href="{% static 'bulma/css/bulma.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome-free-7.0.0-web/css/all.min.css' %}">
+    <style>
+       @media screen and (min-width:481px)
+       {
+        #form-box{
+            width:35%;
+        }
+       }
+    </style>
+</head>
+<body>
+    <header class="ml-4">
+        <a href="{% url 'dashboard' %}" class="has-text-info-25 is-capitalized">
+            <span class="icon">
+                <i class="fas fa-arrow-left"></i>
+            </span>
+            <span>back</span>
+        </a>
+    </header>
+
+
+    <section class="section">
+        <div class="box container has-background-info-25" id="form-box">
+            <form action="{% url 'add-staff' %}" method="post" id="form">
+                {% csrf_token %}
+                <div class="field">
+                    <label for="" class="label has-text-white is-capitalized">username</label>
+                    <div class="control">
+                        <input type="text" name="name" class="input is-expanded">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="" class="label has-text-white is-capitalized">email</label>
+                    <div class="control">
+                        <input type="email" name="email" class="input is-expanded">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="" class="label has-text-white is-capitalized">password</label>
+                    <div class="control">
+                        <input type="password" name="password" class="input is-expanded">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="" class="label has-text-white is-capitalized">role</label>
+                    <div class="control">
+                        <input type="text" name="role" class="input is-expanded">
+                    </div>
+                </div>
+
+                 <div class="field">
+                    <label for="" class="label has-text-white is-capitalized">address</label>
+                    <div class="control">
+                        <input type="text" name="address" class="input is-expanded">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="" class="label has-text-white is-capitalized">phone</label>
+                    <div class="control">
+                        <input type="text" name="phone" class="input is-expanded">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="" class="label has-text-white is-capitalized">salary</label>
+                    <div class="control">
+                        <input type="text" name="salary" class="input is-expanded">
+                    </div>
+                </div>
+
+
+                <div class="field is-grouped">
+                    <div class="control">
+                        <label class="checkbox has-text-white is-capitalized has-text-weight-bold">
+                            <input type="checkbox" name="staff" value="staff">
+                            staff
+                        </label>
+
+                        <label class="checkbox has-text-white is-capitalized has-text-weight-bold">
+                            <input type="checkbox" name="superuser" value="admin">
+                            admin
+                        </label>
+                    </div>
+                </div>
+
+
+                <div class="field">
+                    <label for="" class="label has-text-white is-capitalized">date joined</label>
+                    <div class="control">
+                        <input type="date" name="date" class="input is-expanded">
+                    </div>
+                </div>
+
+
+                <div class="field is-grouped is-grouped-centered">
+                    <div class="control" style="width: 100%;">
+                        <button class="button is-fullwidth is-capitalized is-link" type="submit">add</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        let form=document.getElementById('form');
+        form.addEventListener('submit',function(e){
+            alert("staff added");
+        })
+    </script>
+</body>
+</html>

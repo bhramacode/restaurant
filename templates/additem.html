@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add item</title>
+    <link rel="stylesheet" href="{% static 'bulma/css/bulma.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome-free-7.0.0-web/css/all.min.css' %}">
+    <style>
+        @media screen and (min-width:481px)
+        {
+         #form{
+            position: absolute;
+            width:30%;
+            left:550px;
+            top:200px;
+         }   
+        }
+    </style>
+</head>
+<body>
+    <header class="ml-4">
+        <a href="{% url 'menu' %}" class="has-text-info-25 is-capitalized">
+            <span class="icon">
+                <i class="fas fa-arrow-left"></i>
+            </span>
+            <span>back</span>
+        </a>
+    </header>
+
+    
+    <section class="section">
+        <div class="box has-background-info-25" id="form">
+            <p class="is-capitalized has-text-white has-text-centered">{{success}}</p>
+            <form action="{% url 'add-item' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="field">
+                    <label for="" class="label has-text-white is-capitalized">{{error.item_error}}</label>
+                    <div class="control">
+                        <input type="text" name="item" class="input is-expanded" placeholder="item name">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="" class="label has-text-white is-capitalized">{{error.sp_error}}</label>
+                    <div class="control">
+                        <input type="text" name="selling-price" class="input is-expanded" placeholder="price">
+                    </div>
+                </div>
+
+
+                <div class="field">
+                    <label for="" class="label has-text-white is-capitalized">{{error.image_error}}</label>
+                    <div class="control">
+                        <input type="file" name="image-file" class="input is-expanded">
+                    </div>
+                </div>
+
+                <div class="field is-grouped is-grouped-centered">
+                    <div class="control" style="width: 100%;">
+                        <button class="button is-fullwidth is-capitalized is-link" type="submit">add</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+
+    <script>
+        let form=document.querySelector("form");
+        form.addEventListener('submit',function()
+        {
+            alert("food item added");
+        }
+        );
+    </script>
+</body>
+</html>

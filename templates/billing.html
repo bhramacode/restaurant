@@ -1,0 +1,212 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>order</title>
+  <link rel="stylesheet" href="{% static 'bulma/css/bulma.min.css' %}">
+  <link rel="stylesheet" href="{% static 'fontawesome-free-7.0.0-web/css/all.min.css' %}">
+  <style>
+    @media screen and (min-width:481px)
+    {
+        #pending-box{
+            overflow: auto;
+            height:300px;
+            position: absolute;
+            width:100%;
+        }
+    }
+
+     @media screen and (min-width:481px)
+    {
+        #paid-box{
+            overflow: auto;
+            height:250px;
+            position: absolute;
+            top:400px;
+            width:100%;
+
+
+        }
+    }
+
+
+     @media screen and (max-width:480px)
+    {
+        #pending-box{
+            overflow: auto;
+            height:220px;
+            position: absolute;
+            top:100px;
+            width:95%;
+            left: 10px;
+        }
+        }
+    
+
+     @media screen and (max-width:480px)
+    {
+        #paid-box{
+            overflow: auto;
+            height:220px;
+            position: absolute;
+            top:350px;
+            width:95%;
+            left: 10px;
+
+        }
+    } 
+
+
+    
+     @media screen and (min-width:481px)
+    {
+        header{
+        position:sticky;
+        top: 0;
+        z-index: 10;
+        
+    }
+    }
+
+     @media screen and (max-width:480px)
+    {
+        header{
+        position:sticky;
+        top: 0;
+        
+    }
+    }
+
+    @media screen and (min-width:481px)
+    {
+       #anchor{
+        position: absolute;
+        top:680px;
+       }
+        
+    }
+
+    
+    @media screen and (max-width:480px)
+    {
+       #anchor{
+        position: absolute;
+        top:580px;
+        left:5px;
+       }
+        
+    }
+   
+  </style>
+</head>
+<body>
+    <header class="has-background-info-25">
+        <span class="icon-text ml-2 mt-2 has-text-light">
+            <span class="icon">
+                <i class="fas fa-receipt"></i>
+            </span>
+            <span class="is-capitalized has-text-weight-bold ">billing</span>
+        </span>
+    </header>
+
+
+    <section class="section">
+        <div class="box container" id="pending-box">
+            <p class="is-capitalized has-text-left is-size-5">pending</p>
+            <table class="table is-fullwidth is-capitalized">
+                <thead>
+                    <tr>
+                        <th>order no</th>
+                        <th>table</th>
+                        <th>waiter</th>
+                        <th>item</th>
+                        <th>subtotal</th>
+                        <th>vat</th>
+                        <th>service</th>
+                        <th>total</th>
+                        <th>date/time</th>
+                        <th>action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>order</td>
+                        <td>table</td>
+                        <td>waiter</td>
+                        <td>item</td>
+                        <td>subtotal</td>
+                        <td>vat</td>
+                        <td>service</td>
+                        <td>total</td>
+                        <td>date/time</td>
+                        <td colspan="2">
+                            <div class="buttons is-centered">
+                                <button class="button is-small">pay</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+            
+        <div class="box container" id="paid-box">
+            <p class="has-text-left is-capitalized is-size-5">paid</p>
+            <table class="table is-fullwidth is-capitalized">
+                <thead class="has-text-info-25">
+                    <tr>
+                        <th>order</th>
+                        <th>table</th>
+                        <th>waiter</th>
+                        <th>items</th>
+                        <th>subtotal</th>
+                        <th>vat</th>
+                        <th>service</th>
+                        <th>total</th>
+                        <th>date/time</th>
+                        <th>bill</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>order</td>
+                        <td>table</td>
+                        <td>waiter</td>
+                        <td>item</td>
+                        <td>subtotal</td>
+                        <td>vat</td>
+                        <td>service</td>
+                        <td>total</td>
+                        <td>date/time</td>
+
+                        <td colspan="2">
+                            <div class="buttons is-centered">
+                                <button class="button is-small">print</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+    
+    <section class="section">
+        <a href="{% url 'dashboard' %}" class="is-capitalized has-text-info-25" id="anchor">
+            <span class="icon">
+                <i class="fas fa-arrow-left"></i>
+            </span>
+            back
+        </a>
+    </section>
+   
+</body>
+</html>
+
+
+
+

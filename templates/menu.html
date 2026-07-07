@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>menu</title>
+    <link rel="stylesheet" href="{% static 'bulma/css/bulma.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome-free-7.0.0-web/css/all.min.css' %}">
+    <style>
+       
+        @media screen and (min-width:481px)
+        {
+         #table-box{
+            position: absolute;
+            top: 150px;
+            overflow: auto;
+            height:400px;
+            left:500px;
+            width:40%;
+         }   
+
+          #anchor{
+                position: absolute;
+                top:550px;
+                left:50px;
+            }   
+        }
+
+
+         @media screen and (max-width:480px)
+        {
+            #table-box{
+                position: absolute;
+                top: 120px;
+                overflow: auto;
+                height:300px;
+                width:95%;
+                left:10px;
+            }   
+
+            #anchor{
+                position: absolute;
+                top:420px;
+                left:10px;
+                height: 400px;
+                overflow: auto;
+            }   
+        }
+
+
+
+        
+    </style>
+</head>
+<body>
+    <div class="has-background-info-25 is-fixed-top">
+        <span>📝</span>
+        <span class="has-text-white is-capitalized">food menu</span>
+    </div>
+
+
+    <div class="buttons is-right" style="position: absolute;top:80px;right:20px;">
+        <a href="{% url 'add-item' %}" class="button is-right is-success has-text-white is-capitalized is-small">
+            <span class="icon">
+                <i class="fas fa-plus"></i>
+            </span>
+            <span>add</span>
+        </a>
+    </div>
+    
+
+
+    <section class="section">
+        <div class="box container" id="table-box">
+            <table class="table is-narrow is-fullwidth">
+                <thead class="is-capitalized">
+                    <tr>
+                        <th class="has-text-info-25">item</th>
+                        <th class="has-text-info-25">price</th>
+                        <th class="has-text-info-25">actions</th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    {% for item in data %}
+                    <tr class="has-text-white">
+                        <td>{{item.item}}</td>
+                        <td>{{item.selling_price}}</td>
+                        <td>
+                            <div class="buttons">
+                                <a href="" class="button is-small">
+                                    <span class="icon has-text-link">
+                                        <i class="fas fa-edit"></i>
+                                    </span>
+                                    <!-- <span class="is-capitalized">edit</span> -->
+                                </a>
+                                <a href="" class="button is-small">
+                                    <span class="icon has-text-danger">
+                                        <i class="fas fa-trash-can"></i>
+                                    </span>
+                                    <!-- <span class="is-capitalized">delete</span> -->
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a href="{% url 'dashboard' %}" class="has-text-black is-capitalized" id="anchor">
+            <span class="icon">
+                <i class="fas fa-arrow-left"></i>
+            </span>
+            <span>back</span>
+        </a>
+
+    </section>
+</body>
+</html>

@@ -1,0 +1,637 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dashboard</title>
+  <link rel="stylesheet" href="{% static 'bulma/css/bulma.min.css' %}">
+  <link rel="stylesheet" href="{% static 'fontawesome-free-7.0.0-web/css/all.min.css' %}">
+  <style>
+    
+    /* menu for desktop,tablet and so on */
+    @media screen and (min-width:481px){
+      .aside{
+        overflow-x:auto;
+        height:520px;
+        width:300px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        position: absolute;
+        top:65px;
+        left:10px;
+      }
+      .menu p{
+        position: sticky;
+        top:0;
+        z-index:100;
+      }
+    }
+
+/* for mobile */
+    @media screen and (max-width:480px){
+      .aside{
+        overflow:auto;
+        height:350px;
+        width:350px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        position: absolute;
+        top:65px;
+        left:20px;
+      }
+      .menu p{
+        position: sticky;
+        top:0;
+        z-index:100;
+      }
+    }
+
+
+    /* for desktop ,etc */
+    @media screen and (min-width:481px){
+      .table-container{
+        overflow:auto;
+        height:250px;
+        border-style:none; 
+        border-radius:8px;
+        width:750px;
+        position:absolute;
+        left:300px;
+        top:65px;
+      }
+
+      .table caption{
+        position:sticky;
+        top: 0;
+        z-index: 100;
+      }
+    }
+
+/* for mobile */
+    @media screen and (max-width:480px){
+      .table-container{
+        overflow:auto;
+        height:250px;
+        border-style:none; 
+        border-radius:8px;
+        width:345px;
+        position:absolute;
+        left:0;
+        top:450px;
+      }
+
+      .table caption{
+        position:sticky;
+        top: 0;
+        z-index: 100;
+      }
+    }
+
+    
+/* for desktop,etc */
+    @media screen and (min-width:481px) {
+      .order-list{
+        position: absolute;
+        left:1100px;
+        width:20%;
+        top:115px;
+        height:32%;
+        overflow: auto;
+      }
+      .order-list p{
+        text-align: center;
+        position: sticky;
+        top:0;
+        background-color:rgb(133, 133, 196);
+        width: 100%;
+        border-radius: 10px;
+        color: whitesmoke;
+      }
+    }
+      
+
+
+      @media screen and (max-width:480px) {
+      .order-list{
+        position: absolute;
+        left:30px;
+        width:85%;
+        top:760px;
+        height:20%;
+        overflow: auto;
+        margin: 0;
+        padding: 0;
+      }
+
+      .order-list p{
+        text-align: center;
+        position: sticky;
+        top:0;
+        background-color:rgb(133, 133, 196);
+        width: 100%;
+        border-radius: 10px;
+        color: whitesmoke;
+      }
+
+
+      .table caption{
+        position:sticky;
+        top: 0;
+        z-index: 100;
+      }
+    }
+
+
+    @media screen and (max-width:480px){
+      .grid{
+        position: absolute;
+        top:950px;
+        left:10px;
+        width:50%;
+      }
+    }
+
+    
+
+    @media screen and (min-width:481px){
+      .grid{
+        position: absolute;
+        top:440px;
+        left:322px;
+        width:72%;
+        height:35%;
+      }
+    }
+
+    
+    @media screen and (max-width:480px){
+      footer{
+        position: absolute;
+        top:1600px;
+        left:0;
+        height:200px;
+        width: 100%;
+        margin: 0;padding: 0;
+
+
+      }
+    }
+
+
+    @media screen and (min-width:481px){
+      footer{
+        position: absolute;
+        top:1020px;
+        left:0;
+        height:200px;
+        width: 100%;
+      }
+    }
+
+    .cell{
+      border-radius: 5px;
+      height:100px;
+      width:180px;
+    }
+
+    @media screen and (min-width:481px) {
+      #grid{
+        display: flex;
+        gap: 10px;
+        position: absolute;
+        left:365px;
+        top: 600px;
+        width: 100%;
+      }
+    }
+
+    @media screen and (min-width:481px) {
+      .profitloss{
+       position: absolute;
+        width:68%;
+        border-radius: 10px;
+        top:10px;
+        left:0;
+        overflow: auto;
+        height:150px;
+      }
+    }
+
+     @media screen and (min-width:481px) {
+      .monthlybreakdown{
+       border-radius: 10px;
+       position: absolute;
+        width:68%;
+        border-radius: 10px;
+        top:200px;
+        left:0;
+        overflow: auto;
+        height:200px;
+      }
+    }  
+
+    @media screen and (max-width:480px) {
+      .profitloss{
+        position: absolute;
+        width:100%;
+        border-radius: 10px;
+        top:1200px;
+        left:0;
+        overflow: auto;
+        height:200px;
+      }
+    }
+
+
+    @media screen and (max-width:480px) {
+      .monthlybreakdown{
+        position: absolute;
+        width:100%;
+        border-radius: 10px;
+        top:1420px;
+        left:0;
+        overflow: auto;
+        height: 200px;
+      }
+    }
+
+    @media screen and (min-width:481px) {
+      #title{
+        position: absolute;
+        color: blue;
+        font-size: larger;
+        top:400px;
+        left:320px;
+        font-weight: bolder;
+        text-transform: capitalize;
+      }
+    }
+
+    @media screen and (max-width:480px) {
+      #title{
+        position: absolute;
+        color: blue;
+        font-size: larger;
+        top:920px;
+        left:10px;
+        font-weight: bolder;
+        text-transform: capitalize;
+      }
+    }
+  </style>
+
+</head>
+<body>
+  <nav class="navbar has-background-info-25 is-fixed-top" style="height:60px;">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <span class="icon-text has-text-white">
+          <span class="icon">
+            <i class="fas fa-utensils fa-pulse fa-lg"></i>
+          </span>
+          <span class="is-capitalized is-size-4 has-text-weight-bold">restaurant</span>
+        </span>
+      </div>
+    </div>
+  </nav>
+
+
+
+<section class="section">
+    <aside class="menu has-text-white has-background-info-25 mt-6 aside">
+    <p class="menu-label is-fullwidth has-background-warning-75 has-text-weight-extrabold is-size-5 is-fixed-top">
+      <span class="icon">
+        <i class="fas fa-tachometer-alt"></i>
+      </span>
+      <span>dashboard</span>
+    </p>
+
+
+    <ul class="menu-list ml-2 mr-2 mb-2">
+      <li>
+        <a href="{% url 'take-order' %}" class="button">
+          📝
+          <span class="is-capitalized">take order</span>
+        </a>
+      </li><br>
+
+      <li>
+        <a href="{% url 'billing' %}" class="button">
+          🧾
+          <span class="is-capitalized">billing</span>
+        </a>
+      </li><br>
+
+
+      <li>
+        <a href="{% url 'order' %}" class="button">
+          🍳
+          <span class="is-capitalized">order</span>
+        </a>
+      </li><br>
+
+
+      <li>
+        <a href="{% url 'menu' %}" class="button">
+          📋
+          <span class="is-capitalized">menu items</span>
+        </a>
+      </li><br>
+
+
+      <li>
+        <a href="{% url 'stock' %}" class="button">
+          📋
+          <span class="is-capitalized">stock</span>
+        </a>
+      </li><br>
+
+
+      <li>
+        <a href="{% url 'staff-records' %}" class="button">
+          🧑‍🍳
+          <span class="is-capitalized">staff records</span>
+        </a>
+      </li><br>
+
+      <li>
+        <a href="{% url 'save-staff-attendance' %}" class="button is-capitalized">
+          🗒️
+          <span>staff attendence</span>
+        </a>
+      </li><br>
+
+
+      <li>
+        <a href="" class="button is-capitalized">
+          🚪
+          <span>order records</span>
+        </a>
+      </li><br>
+      
+      <li>
+        <a href="{% url 'add-staff' %}" class="button is-capitalized">
+          👥
+          <span>add staff/admin</span>
+        </a>
+      </li><br>
+
+      <li>
+        <a href="{% url 'attendancerecords' %}" class="button is-capitalized">
+          👥
+          <span>staff attendance records</span>
+        </a>
+      </li><br>
+
+      <li>
+        <a href="" class="button is-capitalized">
+          🔑
+          <span>change password</span>
+        </a>
+      </li><br>
+
+      <li>
+        <a href="{% url 'logout' %}" class="button is-capitalized">
+          🚪
+          <span>logout</span>
+        </a>
+      </li>
+      
+    </ul>
+  </aside>
+</section>
+
+
+<section class="section">
+  <div class="mt-6 ml-5 has-background-white table-container">
+      <table class="table is-fullwidth is-bordered">
+        <caption class="is-capitalized has-background-info-25 has-text-white">recent orders</caption>
+        <tr>
+          <th class="is-capitalized">item</th>
+          <th class="is-capitalized">table</th>
+          <th class="is-capitalized">total</th>
+          <!-- <th class="is-capitalized">status</th> -->
+          <th class="is-capitalized">time</th>
+          <th class="is-capitalized">action</th>
+        </tr>
+
+        <tr>
+          <td>data one </td>
+          <td>data two</td>
+          <td>data three</td>
+          <td>data four</td>
+          <td>data five</td>
+          <td>
+            <a href="" class="button is-small">served</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>data one </td>
+          <td>data two</td>
+          <td>data three</td>
+          <td>data four</td>
+          <td>data five</td>
+          <td>
+            <a href="" class="button is-small">served</a>
+          </td>
+        </tr>
+        <tr>
+          <td>data one </td>
+          <td>data two</td>
+          <td>data three</td>
+          <td>data four</td>
+          <td>data five</td>
+          <td>
+            <a href="" class="button is-small">served</a>
+          </td>
+        </tr>
+        <tr>
+          <td>data one </td>
+          <td>data two</td>
+          <td>data three</td>
+          <td>data four</td>
+          <td>data five</td>
+          <td>
+            <a href="" class="button is-small">served</a>
+          </td>
+        </tr>
+        <tr>
+          <td>data one </td>
+          <td>data two</td>
+          <td>data three</td>
+          <td>data four</td>
+          <td>data five</td>
+          <td>
+            <a href="" class="button is-small">served</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+</section>
+    
+
+<section class="section">
+  <div class="box order-list">
+    <p class="is-capitalized has-text-weight-bold">top selling items</p>
+    <ol>
+      <li>list 1</li>
+      <li>list 2</li>
+      <li>list 3</li>
+      <li>list 4</li>
+      <li>list 5</li>
+      <li>list 6</li>
+      <li>list 7</li>
+      <li>list 8</li>
+      <li>list 9</li>
+    </ol>
+  </div>
+</section>
+
+
+ <div class="title-container">
+   <p class="" id="title">profit & loss report</p>
+ </div>
+
+
+<section class="section">
+  <div class="fixed-grid has-4-cols-tablet has-2-cols-mobile">
+    <div class="grid is-row-gap-2">
+      <div class="cell has-background-info-25 has-text-white">
+        <p class="has-text-centered is-capitalized">total revenue</p>
+        <p class="is-size-6">Rs 1k</p>
+      </div>
+
+      <div class="cell has-background-info-25 has-text-white">
+        <p class="is-capitalized has-text-centered">total cost</p>
+        <p class="is-size-6">Rs 1k</p>
+      </div>
+
+      <div class="cell has-background-info-25 has-text-white">
+        <p class="has-text-centered is-capitalized">net profit</p>
+        <p class="">title</p>
+      </div>
+
+
+      <div class="cell has-background-info-25 has-text-white">
+        <p class="is-capitalized has-text-centered">margin</p>
+      </div>
+
+
+    </div>
+  </div> 
+</section>
+
+<section class="section">
+  <div id="grid">
+    <div class="has-background-info-25 has-text-white profitloss">
+      <p class="has-text-centered is-capitalized is-underlined">profit & loss summary</p>
+      <table class="table is-narrow is-fullwidth">
+        <thead class="has-background-info-25">
+          <tr>
+            <th class="has-text-white">food sells</th>
+            <th class="has-text-white">vat collected</th>
+            <th class="has-text-white">service</th>
+            <th class="has-text-white">total revenue</th>
+            <th class="has-text-white">gross profit(food)</th>
+            <th class="has-text-white">net profit(after reduction)</th>
+
+          </tr>
+        </thead>
+
+        <tbody class="has-background-info-25">
+          <tr>
+            <td class="has-text-white">food sells</td>
+            <td class="has-text-white">vat collected</td>
+            <td class="has-text-white">service</td>
+            <td class="has-text-white">total revenue</td>
+            <td class="has-text-white">gross profit</td>
+            <td class="has-text-white">net profit</td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="has-background-info-25 has-text-white monthlybreakdown">
+      <p class="has-text-centered is-capitalized is-underlined">monthly breakdown</p>
+      <table class="table is-narrow is-fullwidth">
+        <thead class="has-background-info-25">
+          <tr>
+            <th class="has-text-white">month</th>
+            <th class="has-text-white">orders</th>
+            <th class="has-text-white">revenue</th>
+            <th class="has-text-white">cost</th>
+            <th class="has-text-white">profit</th>
+            <th class="has-text-white">margin</th>
+          </tr>
+        </thead>
+
+        <tbody class="has-background-info-25">
+          <tr>
+            <td class="has-text-white">month</td>
+            <td class="has-text-white">orders</td>
+            <td class="has-text-white">revenue</td>
+            <td class="has-text-white">cost</td>
+            <td class="has-text-white">profit</td>
+            <td class="has-text-white">margin</td>
+          </tr>
+          <tr>
+            <td class="has-text-white">month</td>
+            <td class="has-text-white">orders</td>
+            <td class="has-text-white">revenue</td>
+            <td class="has-text-white">cost</td>
+            <td class="has-text-white">profit</td>
+            <td class="has-text-white">margin</td>
+          </tr>
+          <tr>
+            <td class="has-text-white">month</td>
+            <td class="has-text-white">orders</td>
+            <td class="has-text-white">revenue</td>
+            <td class="has-text-white">cost</td>
+            <td class="has-text-white">profit</td>
+            <td class="has-text-white">margin</td>
+          </tr>
+          <tr>
+            <td class="has-text-white">month</td>
+            <td class="has-text-white">orders</td>
+            <td class="has-text-white">revenue</td>
+            <td class="has-text-white">cost</td>
+            <td class="has-text-white">profit</td>
+            <td class="has-text-white">margin</td>
+          </tr>
+          <tr>
+            <td class="has-text-white">month</td>
+            <td class="has-text-white">orders</td>
+            <td class="has-text-white">revenue</td>
+            <td class="has-text-white">cost</td>
+            <td class="has-text-white">profit</td>
+            <td class="has-text-white">margin</td>
+          </tr>
+          <tr>
+            <td class="has-text-white">month</td>
+            <td class="has-text-white">orders</td>
+            <td class="has-text-white">revenue</td>
+            <td class="has-text-white">cost</td>
+            <td class="has-text-white">profit</td>
+            <td class="has-text-white">margin</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <p class="content has-text-info-25 is-capitalized is-underlined ">{{username}}</p>
+  <p class="content has-text-centered">&copy;hotel.all rights reserved</p>
+  <p class="content has-text-right has-text-light is-capitalized">created by bramacode it solutions</p>
+</footer> 
+</body>
+</html>

@@ -1,0 +1,216 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cart</title>
+  <link rel="stylesheet" href="{% static 'bulma/css/bulma.min.css' %}">
+  <link rel="stylesheet" href="{% static 'fontawesome-free-7.0.0-web/css/all.min.css' %}">
+  <style>
+    @media screen and (min-width:481px) {
+        .outer-box{
+            position:absolute;
+            top:50px;
+            left:200px;
+            width:30%;
+            top:100px;
+        }
+
+        .field-container{
+            position:absolute;
+            top:100px;
+            left:700px;
+            width:40%;
+        }
+        .back-button{
+            position:absolute;
+            top:510px;
+        }
+    }
+
+    @media screen and (max-width:480px) {
+        .outer-box{
+            position:absolute;
+            top:100px;
+            left:20px;
+            width:88%;
+        }
+
+        .field-container{
+            position:absolute;
+            top:220px;
+            left:20px;
+            width:88%;
+        }
+
+        .back-button{
+            position:absolute;
+            top:510px;
+        }
+    }
+</style>
+</head>
+<body>
+    <header class="has-background-info-25">
+        <span class="icon-text ml-2 has-text-white">
+            🛒
+            <span class="is-capitalized has-text-weight-bold ">cart</span>
+        </span>
+    </header>
+
+    <section class="section">
+        <div class="box outer-box">
+            <div class="item-box is-flex is-justify-content-space-between">
+                <p>item</p>
+                <div class="inner-box">
+                    <button class="button is-small" id="minus-btn"> - </button>
+                    <span id="number"> 1 </span>
+                    <button class="button is-small" id="plus-btn"> + </button>
+
+                    <div>
+                        <span class="is-capitalized">rs</span><span class="is-capitalized">100</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="section">
+        <div class="box field-container">
+            
+            <div class="field">
+                <div class="control">
+                    <label for="" class="label is-capitalized">
+                        item
+                        <input type="text" class="input is-small">
+                    </label>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <label class="label is-capitalized">
+                        quantity
+                        <input type="text" class="input is-small">
+                    </label>
+                </div>
+            </div>
+
+
+            <div class="field">
+                <div class="control">
+                    <label class="label is-capitalized">
+                        price
+                        <input type="text" class="input is-small">
+                    </label>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <button type="submit" class="button is-fullwidth is-primary has-text-white has-text-weight-bold">confirm</button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+    <section class="section">
+        <div class="back-button">
+            <a href="{% url 'take-order' %}" class="has-text-black is-capitalized">
+                <span class="icon">
+                    <i class="fas fa-arrow-left"></i>
+                </span>
+                back
+            </a>
+        </div>
+    </section>
+
+
+
+    
+    <script>
+        let display_number=document.querySelector("#number");
+        let minus_btn=document.querySelector("#minus-btn");
+        let plus_btn=document.querySelector("#plus-btn");
+
+        minus_btn.addEventListener('click',function(){
+            let number=parseInt(display_number.textContent);
+            if (number > 1){
+                display_number.textContent=number -1;
+            }
+        });
+
+        plus_btn.addEventListener('click',function(){
+            let number=parseInt(display_number.textContent);
+            if (number >= 1){
+                display_number.textContent=number +1;
+            }
+        });
+        
+
+
+
+
+
+
+        // let cells=document.querySelectorAll(".cell");
+        // let options=document.querySelector("option");
+
+        // let table=document.querySelector(".table");
+        // let item_name=document.querySelector(".item-name");
+        // let price=document.querySelector(".price");
+        // let vat=document.querySelector(".vat");
+        // let service=document.querySelector(".service");
+        // let total=document.querySelector(".total");
+
+        // cells.forEach((cell)=>{
+        //     cell.addEventListener("click",function(e){
+        //         e.preventDefault();
+        //         let item=this.querySelector(".item").textContent;
+        //         let item_price=this.querySelector(".rupees").textContent;
+        //         let price_value=Number(item_price);
+
+
+        //         table.value=options;
+        //         item_name.value=item;
+        //         price.value=price_value;
+
+        //         let vat_amount=price_value*(13/100);
+        //         vat.value=vat_amount.toFixed(2);
+
+        //         let service_charge=(10/100)*price_value;
+        //         service.value=service_charge.toFixed(2);
+
+        //         total.value=price_value+service_charge+vat_amount;
+
+        //     });
+        // });
+
+        // document.querySelector("form").addEventListener("submit",function(e){
+        //     e.preventDefault();
+        //     setTimeout(function(){
+        //         alert("order placed");
+        //     },0);
+        // });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

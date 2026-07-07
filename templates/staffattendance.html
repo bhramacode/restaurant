@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="{% static 'bulma/css/bulma.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome-free-7.0.0-web/css/all.min.css' %}">
+    <style>
+
+        @media screen and (min-width:481px) {
+            #box{
+                width:350px;
+                margin-left:550px;
+                margin-top: 100px;
+            }
+        }
+
+
+        @media screen and (max-width:480px){
+            .box{
+                position:absolute;
+                top:120px;
+                left:40px;
+                width:300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <p class="is-capitalized has-text-centered">{{success}}</p>
+    <section class="section">
+        <div class="box has-background-info-25" id="box">
+            <a href="{% url 'dashboard' %}" class="has-text-white  is-capitalized">
+                <span class="icon">
+                    <i class="fas fa-arrow-left"></i>
+                </span>
+                <span>back</span>
+            </a>
+
+
+            <form action="{% url 'save-staff-attendance' %}" method="post">
+                {% csrf_token %}
+                <p class="has-text-white has-text-centered is-size-5 is-capitalized">staff attendance</p>
+                <div class="field">
+                    <label for="" class="label has-text-white is-capitalized"></label>
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select name="select-staff">
+                                <option hidden>select staff</option>
+                                {% for staff_name in staffs %}
+                                 <option value="{{staff_name.username}}">{{staff_name.username}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+               <div class="field">
+                    <label for="" class="label has-text-white is-capitalized"></label>
+                    <div class="control">
+                       <div class="select is-fullwidth">
+                            <select name="email" id="">
+                                <option hidden>select email</option>
+                                {% for staff_email in staffs %}
+                                 <option value="{{staff_email.email}}">{{staff_email.email}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="field">
+                    <label for="" class="label has-text-white is-capitalized"></label>
+                    <div class="control">
+                       <div class="select is-fullwidth">
+                            <select name="role" id="">
+                                <option hidden>select role</option>
+                                <option value="chec">chef</option>
+                                <option value="waiter">waiter</option>
+                                <option value="dishwasher">dishwasher</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <label for="" class="label has-text-white is-capitalized"></label>
+                        <div class="radios">
+                            <label class="radio has-text-white  is-capitalized">
+                                <input type="radio" name="attendance" value="present">
+                                present
+                            </label>
+
+                            <label class="radio has-text-white is-capitalized">
+                                <input type="radio" name="attendance" value="absent">
+                                absent
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <label for="" class="label is-capitalized has-text-white"></label>
+                        <input type="date" class="input" name="date"> 
+                    </div>
+                </div>
+
+                <div class="field is-grouped is-grouped-centered">
+                    <div class="control" style="width: 100%;">
+                        <button class="button is-fullwidth is-capitalized is-link" type="submit">submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

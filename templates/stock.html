@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dashboard</title>
+  <link rel="stylesheet" href="{% static 'bulma/css/bulma.min.css' %}">
+  <link rel="stylesheet" href="{% static 'fontawesome-free-7.0.0-web/css/all.min.css' %}">
+</head>
+<body>
+    <header class="has-background-info-25">
+        <span class="icon-text ml-2 mt-2 has-text-white">
+            🏪
+            <span class="is-capitalized has-text-weight-bold ">new order</span>
+        </span>
+    </header>
+
+    <section class="section">
+        <div class="has-background-white" style="overflow:auto;height:300px;border-style:none; border-radius:8px;">
+            <table class="table is-fullwidth is-narrow" style="margin:0;padding: 0;width: 100%;">
+                <thead class="has-background-info-25">
+                    <tr>
+                        <th class="is-capitalized has-text-white">item</th>
+                        <th class="is-capitalized has-text-white">stock</th>
+                        <th class="is-capitalized has-text-white">min alert</th>
+                        <th class="is-capitalized has-text-white">status</th>
+                        <th class="is-capitalized has-text-white">restock</th>
+                     </tr>
+                </thead>
+
+                <tbody>
+                     <tr>
+                        <td>samosa</td>
+                        <td>10</td>
+                        <td>5</td>
+                        <td>sufficient</td>
+                        <td>
+                            <a href="" class="button is-small is-capitalized is-link is-inverted">add</a>
+                        </td>
+                    </tr>
+                </tbody>
+                
+            </table>
+
+            <a href="{% url 'dashboard' %}" class="has-text-info-25 is-capitalized">
+                <span class="icon">
+                    <i class="fas fa-arrow-left"></i>
+                </span>
+                <span>back</span>
+            </a>
+        </div>
+    </section>
+</body>
+</html>
+
+
+
+

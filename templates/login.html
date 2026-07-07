@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="{% static 'bulma/css/bulma.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome-free-7.0.0-web/css/all.min.css' %}">
+    <style>
+        body{
+            height:100vh;
+            background-color: rgb(201, 217, 222);
+        }
+
+        @media screen and (min-width:481px) {
+            #box{
+                width:350px;
+                margin-left:550px;
+                margin-top: 100px;
+            }
+        }
+
+
+        @media screen and (max-width:480px){
+            .box{                                         
+                position:absolute;
+                top:120px;
+                left:40px;
+                width:300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div class="box has-background-info-25" id="box">
+            <p class="has-text-centered has-text-danger is-capitalized">{{credential_error}}</p>
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <p class="has-text-white has-text-centered is-size-5 is-capitalized">login</p>
+                <div class="field">
+                    <label for="" class="label has-text-white is-capitalized">username</label>
+                    <span class="has-text-danger">{{error.name_error}}</span>
+                    <div class="control">
+                        <input type="text" name="username" class="input is-expanded">
+                    </div>
+                </div>
+
+
+                <div class="field">
+                    <label for="" class="label has-text-white is-capitalized">password</label>
+                    <span class="has-text-danger">{{error.password_error}}</span>
+                    <div class="control">
+                        <input type="password" name="password" class="input is-expanded">
+                    </div>
+                </div>
+
+
+                <div class="field is-grouped is-grouped-centered">
+                    <div class="control" style="width: 100%;">
+                        <button class="button is-fullwidth is-capitalized is-link" type="submit">login</button>
+                    </div>
+                </div>
+                <a href="" class="has-text-white is-capitalized">forget password</a><br>
+                <a href="" class="has-text-white is-capitalized">don't have an account?signup here</a>
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>

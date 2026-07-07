@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kitchen</title>
+    <link rel="stylesheet" href="{% static 'bulma/css/bulma.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome-free-7.0.0-web/css/all.min.css' %}">
+    <style>
+        @media screen and (max-width:480px) {
+            #cell-box{
+                width:340px;
+                height:100%;
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        .cell{
+            height:100%;
+            width:250px;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="has-background-info-25">
+        <span class="icon-text ml-2 mt-2 has-text-light">
+            <span class="icon">
+                <i class="fas fa-list"></i>
+            </span>
+            <span class="is-capitalized has-text-weight-bold ">new order</span>
+        </span>
+    </header>
+
+
+    <section class="section">
+        <div class="fixed-grid has-4-cols-desktop has-1-cols-mobile has-3-cols-tablet">
+            <div class="grid">
+                <div class="cell has-background-info-15" id="cell-box">
+                    <label for="" class="has-text-white ml-2">table</label>
+
+                    <div class="field is-horizontal mt-2 ml-2">
+                        <span class="field-body">
+                            <span class="field">
+                                <span class="control">
+                                    <input type="text" name="name" value="samosa,momo" class="has-background-info-15 has-text-white" style="border-style: none;">
+                                </span>
+                            </span>
+                        </span>
+
+                        <span class="field-label has-text-white">
+                            <label for="">x1</label>
+                        </span>
+
+                    </div>
+                   <div class="field is-grouped is-grouped-centered">
+                        <div class="control" style="width:80%;">
+                            <button class="button is-small mb-2 is-capitalized is-fullwidth">done</button>
+                        </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+        <a href="{% url 'dashboard' %}" class="has-text-info-25">
+            <span class="icon">
+                <i class="fas fa-arrow-left"></i>
+            </span>
+            <span class="is-capitalized">back</span>
+        </a>
+    </section>
+</body>
+</html>
